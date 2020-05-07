@@ -1,15 +1,11 @@
 import tweepy
 import random
 
+import key
 import tokenizer
 
-CK = "DKbyGy2z282qmy9A21h5xIf6Q"
-CS = "HSQSGw8Om2zmtBF2hQxrJzjlZ7XDtxZFmvSyIX1qw266YyChlM"
-AT = "1227127701191847936-V9cK4HPELzg5d4Xf1gwz134zk0onZC"
-AS = "RNq5vWFRKM4An7jqlB5dfftcjbszUwQ1PwVYzdxKdJYkR"
-
-auth = tweepy.OAuthHandler(CK, CS)
-auth.set_access_token(AT, AS)
+auth = tweepy.OAuthHandler(key.CK, key.CS)
+auth.set_access_token(key.AT, key.AS)
 
 api = tweepy.API(auth)
 
