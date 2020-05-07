@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 import tweepy
 import key
 import random
+#from requests_oauthlib import OAuth1Session
 
 Twitter_ID = "hiromachinanami"
 SCREEN_NAME = '普通bot'
@@ -8,10 +10,10 @@ SCREEN_NAME = '普通bot'
 auth = tweepy.OAuthHandler(key.CK, key.CS)
 auth.set_access_token(key.AT, key.AS)
 
-api2 = tweepy.API(auth)
-timeline=api2.mentions_timeline(count=1)
+api = tweepy.API(auth)
+timeline = api.mentions_timeline(count=1)
 
-f = open("texts/response.txt", "r")
+f = open("/Users/iwasaka/PycharmProjects/Nanamin/texts/response.txt", "r")
 l = f.readlines()
 response = "".join(random.sample(l,1))
 
@@ -31,8 +33,8 @@ for status in timeline:
       except:
           pass
       reply_text="@" + screen_name + " " + res
-      api2.create_favorite(status.id)
+      api.create_favorite(status.id)
       if str(status.in_reply_to_screen_name) == Twitter_ID and str(status.user.screen_name) != Twitter_ID:
-          api2.update_status(status=reply_text, in_reply_to_status_id=status_id)
+          api.update_status(status=reply_text, in_reply_to_status_id=status_id)
       else:
           print("エラー")
