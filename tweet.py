@@ -17,8 +17,7 @@ try:
             sen_list.append(sentence)
     tweet = tokenizer.generate_tweet(sen_list[random.randint(0, len(sen_list) - 1)])
     api.update_status(tweet)
-except tweepy.error.RateLimitError as e:
-    print(e)
+except:
     api.update_status("今、スマホで調べてるからちょっと待ってて")
 
 
