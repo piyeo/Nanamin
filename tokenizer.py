@@ -18,9 +18,9 @@ def generate_tweet(sentense):
         del base_word_list[base_word_list.index('https'):len(base_word_list)]
     except:
         pass
-    print(word_list)
-    print(part_list)
-    print(base_word_list)
+    # print(word_list)
+    # print(part_list)
+    # print(base_word_list)
     part_cnt = 0
     cnt = 0
     gen_sentense = ''
