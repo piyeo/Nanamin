@@ -32,6 +32,8 @@ def generate_tweet(sentense):
             try:
                 if part_list[cnt + 1] == ('動詞'):
                     gen_sentense += (base_word_list[cnt + 1] + "こと")
+                elif part_list[cnt + 2] == ('動詞'):
+                    gen_sentense += (word_list[cnt + 1] + base_word_list[cnt + 2] + "こと")
             except:
                 pass
             break
