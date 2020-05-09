@@ -8,8 +8,8 @@ auth.set_access_token(key.AT, key.AS)
 
 api = tweepy.API(auth)
 
-timeline = api.user_timeline(screen_name="bang_dream_gbp", count=10)
-#
+timeline = api.user_timeline(screen_name="bang_dream_gbp", count=3)
+
 for status in timeline:
     status_id = status.id
     screen_name = status.author.screen_name

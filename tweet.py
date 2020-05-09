@@ -20,7 +20,7 @@ try:
                     "かわいい" not in sentence and "よろしく" not in sentence and\
                     "草" not in sentence and "w" not in sentence and "寝" not in sentence and\
                     "イベ" not in sentence and "協力" not in sentence and "なんで" not in sentence and\
-                    "どうして" not in sentence:
+                    "どうして" not in sentence and "ありがと" not in sentence:
                 if "http" not in sentence:
                     if len(sentence) >= 30:
                         sentence = sentence[:30]
