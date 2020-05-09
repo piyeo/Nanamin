@@ -13,6 +13,7 @@ f = open("texts/response.txt", "r")
 l = f.readlines()
 response = "".join(random.sample(l,1))
 
+
 class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         status_id = status.id
@@ -21,12 +22,13 @@ class MyStreamListener(tweepy.StreamListener):
             res = response
             if "Name" in res:
                 res = res.replace("Name", str(status.user.name))
-            reply_text = "@" + screen_name + " " + res + "　" * random.randint(0,10)
+            reply_text = "@" + screen_name + " " + res + "　" * random.randint(0,5)
             api.create_favorite(status_id)
             if str(screen_name) != Twitter_ID:
                 api.update_status(status=reply_text, in_reply_to_status_id=status_id)
             else:
                 print("自分に返信送っちゃだめ")
+
 
 stream = tweepy.Stream(auth, MyStreamListener())
 while True:

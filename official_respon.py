@@ -1,21 +1,36 @@
+#-*- coding:utf-8 -*-
 import tweepy
-import random
-
 import key
+import random
 
 auth = tweepy.OAuthHandler(key.CK, key.CS)
 auth.set_access_token(key.AT, key.AS)
 
 api = tweepy.API(auth)
 
-timeline = api.user_timeline(screen_name="bang_dream_gbp", count=3)
+Twitter_ID = "hiromachinanami"
 
-for status in timeline:
-    status_id = status.id
-    screen_name = status.author.screen_name
-    sentence = str(status.text).replace('\n', '')
-    if "七深" in sentence:
-        api.create_favorite(status_id)
-        api.retweet(status.id)
-        reply_text = "@" + screen_name + " " + "広町はっけーーん！"
-        api.update_status(status=reply_text, in_reply_to_status_id=status_id)
+
+class MyStreamListener(tweepy.StreamListener):
+    def on_status(self, status):
+        status_id = status.id
+        screen_name = status.user.screen_name
+        if str(screen_name) == "bang_dream_gbp":
+            if "七深" in str(status.text):
+                reply_text = "@" + screen_name + "  広町はっけーん！" + "　" * random.randint(0,5)
+                api.create_favorite(status_id)
+                api.create_retweet(status_id)
+                api.update_status(status=reply_text, in_reply_to_status_id=status_id)
+
+
+stream = tweepy.Stream(auth, MyStreamListener())
+while True:
+    try:
+        stream.filter(track=["#バンドリ","#ガルパ"])
+    except KeyboardInterrupt:
+        stream.disconnect()
+        break
+    except Exception as e:
+        stream.disconnect()
+        print(e)
+
