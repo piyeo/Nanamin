@@ -23,7 +23,8 @@ try:
                     "どうして" not in sentence and "ありがと" not in sentence and "(" not in sentence and\
                     ")" not in sentence and "..." not in sentence and "…" not in sentence and\
                     sentence[-1:] != "?" and sentence[-1:] != "!" and sentence[-1:] != "？" and\
-                    sentence[-1:] != "！" and "RT" not in sentence and "RT" not in sentence:
+                    sentence[-1:] != "！" and "RT" not in sentence and "RT" not in sentence and\
+                    "どこ" not in sentence and "誰" not in sentence and "だれ" not in sentence:
                 if "http" not in sentence:
                     if len(sentence) >= 30:
                         sentence = sentence[:30]
