@@ -19,12 +19,13 @@ try:
                     "笑" not in sentence and "おやすみ" not in sentence and\
                     "かわいい" not in sentence and "よろしく" not in sentence and\
                     "草" not in sentence and "w" not in sentence and "寝" not in sentence and\
-                    "イベ" not in sentence and "協力" not in sentence and "なんで" not in sentence and\
+                    "イベお" not in sentence and "協力" not in sentence and "なんで" not in sentence and\
                     "どうして" not in sentence and "ありがと" not in sentence and "(" not in sentence and\
                     ")" not in sentence and "..." not in sentence and "…" not in sentence and\
                     "?" not in sentence and sentence[-1:] != "!" and "？" not in sentence and\
                     sentence[-1:] != "！" and "RT" not in sentence and "RT" not in sentence and\
-                    "どこ" not in sentence and "誰" not in sentence and "だれ" not in sentence:
+                    "どこ" not in sentence and "誰" not in sentence and "だれ" not in sentence and\
+                    "かっこよ" not in sentence and "イベ乙" not in sentence:
                 if "http" not in sentence:
                     if len(sentence) >= 30:
                         sentence = sentence[:30]
