@@ -7,7 +7,8 @@ auth = tweepy.OAuthHandler(key.CK, key.CS)
 auth.set_access_token(key.AT, key.AS)
 api = tweepy.API(auth)
 
-Twitter_ID = "hiromachinanami"
+Twitter_ID = str(api.me().screen_name)
+filter_ID = "@" + Twitter_ID
 
 f = open("texts/response.txt", "r")
 l = f.readlines()
@@ -33,7 +34,7 @@ class MyStreamListener(tweepy.StreamListener):
 stream = tweepy.Stream(auth, MyStreamListener())
 while True:
     try:
-        stream.filter(track=["@hiromachinanami"])
+        stream.filter(track=[filter_ID])
     except KeyboardInterrupt:
         stream.disconnect()
         break
