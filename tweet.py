@@ -25,7 +25,7 @@ try:
                     "?" not in sentence and sentence[-1:] != "!" and "？" not in sentence and\
                     sentence[-1:] != "！" and "RT" not in sentence and "RT" not in sentence and\
                     "どこ" not in sentence and "誰" not in sentence and "だれ" not in sentence and\
-                    "かっこよ" not in sentence and "イベ乙" not in sentence:
+                    "かっこよ" not in sentence and "イベ乙" not in sentence and "・・・" not in sentence:
                 if "http" not in sentence:
                     if len(sentence) >= 30:
                         sentence = sentence[:30]
