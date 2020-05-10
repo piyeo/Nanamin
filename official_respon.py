@@ -8,7 +8,7 @@ auth.set_access_token(key.AT, key.AS)
 
 api = tweepy.API(auth)
 
-Twitter_ID = "hiromachinanami"
+Twitter_ID = str(api.me().screen_name)
 
 
 class MyStreamListener(tweepy.StreamListener):
