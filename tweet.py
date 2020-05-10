@@ -22,7 +22,7 @@ try:
                     "イベ" not in sentence and "協力" not in sentence and "なんで" not in sentence and\
                     "どうして" not in sentence and "ありがと" not in sentence and "(" not in sentence and\
                     ")" not in sentence and "..." not in sentence and "…" not in sentence and\
-                    sentence[-1:] != "?" and sentence[-1:] != "!" and sentence[-1:] != "？" and\
+                    "?" not in sentence and sentence[-1:] != "!" and "？" not in sentence and\
                     sentence[-1:] != "！" and "RT" not in sentence and "RT" not in sentence and\
                     "どこ" not in sentence and "誰" not in sentence and "だれ" not in sentence:
                 if "http" not in sentence:
