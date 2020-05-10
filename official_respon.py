@@ -17,10 +17,11 @@ class MyStreamListener(tweepy.StreamListener):
         screen_name = status.user.screen_name
         if str(screen_name) == "bang_dream_gbp":
             if "七深" in str(status.text):
-                reply_text = "@" + screen_name + "  広町はっけーん！" + "　" * random.randint(0,5)
                 api.create_favorite(status_id)
-                api.create_retweet(status_id)
-                api.update_status(status=reply_text, in_reply_to_status_id=status_id)
+                api.retweet(status_id)
+                if "紹介" in str(status.text) or ("イベント" in str(status.text) and "開催" in str(status.text)):
+                    reply_text = "@" + screen_name + "  広町はっけーん！" + "　" * random.randint(0, 5)
+                    api.update_status(status=reply_text, in_reply_to_status_id=status_id)
 
 
 stream = tweepy.Stream(auth, MyStreamListener())
