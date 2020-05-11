@@ -28,16 +28,17 @@ try:
                     sentence[-1:] != "！" and "RT" not in sentence and "RT" not in sentence and\
                     "どこ" not in sentence and "誰" not in sentence and "だれ" not in sentence and\
                     "かっこよ" not in sentence and "イベ乙" not in sentence and "・・・" not in sentence and\
-                    sentence[0] != "#" and "あああ" not in sentence and "ぁぁぁ" not in sentence:
+                    sentence[0] != "#" and "あああ" not in sentence and "ぁぁぁ" not in sentence and\
+                    "まじで" not in sentence and "マジで" not in sentence:
                 if "http" not in sentence:
                     if len(sentence) >= 30:
                         sentence = sentence[:30]
-                    print(sentence)
+                    print(sentence,tokenizer.generate_tweet(sentence))
                     sen_list.append(sentence)
     tweet = tokenizer.generate_tweet(sen_list[random.randint(0, len(sen_list) - 1)])
-    # api.update_status(tweet)
+    api.update_status(tweet)
 except:
-    # api.update_status("今、スマホで調べてるからちょっと待ってて")
+    api.update_status("今、スマホで調べてるからちょっと待ってて")
     pass
 
 

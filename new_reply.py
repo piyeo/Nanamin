@@ -10,17 +10,14 @@ api = tweepy.API(auth)
 Twitter_ID = str(api.me().screen_name)
 filter_ID = "@" + Twitter_ID
 
-f = open("texts/response.txt", "r")
-l = f.readlines()
-response = "".join(random.sample(l,1))
-
-
 class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         status_id = status.id
         screen_name = status.user.screen_name
         if str(status.in_reply_to_screen_name) == Twitter_ID:
-            res = response
+            f = open("texts/response.txt", "r")
+            line = f.readlines()
+            res = "".join(random.sample(line, 1))
             if "Name" in res:
                 res = res.replace("Name", str(status.user.name))
             reply_text = "@" + screen_name + " " + res + "　" * random.randint(0,5)
