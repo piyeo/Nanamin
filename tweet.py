@@ -11,7 +11,7 @@ api = tweepy.API(auth)
 
 try:
     sen_list = []
-    for status in api.home_timeline(count=200):
+    for status in api.home_timeline(count=300):
         sentence = str(status.text).replace('\n', '')
         if len(sentence) <= 50 and len(sentence) >= 10:
             if "@" not in sentence and "質問" not in sentence and\
