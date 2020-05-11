@@ -11,7 +11,7 @@ api = tweepy.API(auth)
 
 try:
     sen_list = []
-    for status in api.home_timeline(count=300):
+    for status in api.home_timeline(count=200):
         sentence = str(status.text).replace('\n', '')
         if len(sentence) <= 50 and len(sentence) >= 10:
             if "@" not in sentence and "質問" not in sentence and\
@@ -25,7 +25,8 @@ try:
                     "?" not in sentence and sentence[-1:] != "!" and "？" not in sentence and\
                     sentence[-1:] != "！" and "RT" not in sentence and "RT" not in sentence and\
                     "どこ" not in sentence and "誰" not in sentence and "だれ" not in sentence and\
-                    "かっこよ" not in sentence and "イベ乙" not in sentence and "・・・" not in sentence:
+                    "かっこよ" not in sentence and "イベ乙" not in sentence and "・・・" not in sentence and\
+                    sentence[0] != "#":
                 if "http" not in sentence:
                     if len(sentence) >= 30:
                         sentence = sentence[:30]
