@@ -8,33 +8,32 @@ auth = tweepy.OAuthHandler(key.CK, key.CS)
 auth.set_access_token(key.AT, key.AS)
 
 api = tweepy.API(auth)
+Twitter_ID = str(api.me().screen_name)
+
+ng_word = ["@", "質問", "おは", "普通", "おやすみ", "かわいい", "よろ", "w", "WW",
+           "寝", "イベお", "乙", "協力", "なんで", "ふざけん", "！！",
+           "どうして", "なぜ", "何故", "ありがと", "(", ")", ".", "・・", "…", "RT", "ＲＴ", "どこ", "誰", "だれ",
+           "かっこ", "イベ乙", "ああ", "ぁぁ", "ぉぉ", "おお", "ぇぇ", "ええ", "まじで", "マジで", "かよ", "shindan",
+           "殺", "ほか", "定期"]
 
 try:
     sen_list = []
     for status in api.home_timeline(count=300):
-        if status.user.screen_name == "hiromachinanami":
+        check = False
+        if status.user.screen_name == Twitter_ID:
             continue
         sentence = str(status.text).replace('\n', '')
-        if len(sentence) <= 50 and len(sentence) >= 10:
-            if "@" not in sentence and "質問" not in sentence and\
-                    "おはよ" not in sentence and "普通" not in sentence and\
-                    "笑" not in sentence and "おやすみ" not in sentence and\
-                    "かわいい" not in sentence and "よろしく" not in sentence and\
-                    "草" not in sentence and "w" not in sentence and "寝" not in sentence and\
-                    "イベお" not in sentence and "協力" not in sentence and "なんで" not in sentence and\
-                    "どうして" not in sentence and "ありがと" not in sentence and "(" not in sentence and\
-                    ")" not in sentence and "..." not in sentence and "…" not in sentence and\
-                    "?" not in sentence and sentence[-1:] != "!" and "？" not in sentence and\
-                    sentence[-1:] != "！" and "RT" not in sentence and "RT" not in sentence and\
-                    "どこ" not in sentence and "誰" not in sentence and "だれ" not in sentence and\
-                    "かっこよ" not in sentence and "イベ乙" not in sentence and "・・・" not in sentence and\
-                    sentence[0] != "#" and "あああ" not in sentence and "ぁぁぁ" not in sentence and\
-                    "まじで" not in sentence and "マジで" not in sentence and "かよ" not in sentence and\
-                    "shindan" not in sentence:
-                if "http" not in sentence:
+        if 50 >= len(sentence) >= 10:
+            for word in ng_word:
+                if word in sentence:
+                    check = True
+            if not check:
+                if "http" not in sentence and sentence[0] != "#" and ("死" not in sentence or "爆死" in sentence)\
+                        and sentence[-1] != "ー" and ("笑" not in sentence or "笑う" in sentence
+                                                     or "笑え" in sentence or "笑っ" in sentence):
                     if len(sentence) >= 30:
                         sentence = sentence[:30]
-                    print(sentence,tokenizer.generate_tweet(sentence))
+                    print(sentence, tokenizer.generate_tweet(sentence))
                     sen_list.append(sentence)
     tweet = tokenizer.generate_tweet(sen_list[random.randint(0, len(sen_list) - 1)])
     api.update_status(tweet)
