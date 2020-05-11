@@ -4,6 +4,7 @@ import sys
 import urllib.request
 import pyocr
 import pyocr.builders
+import random
 
 def screen_ocr(im_url):
  tools = pyocr.get_available_tools()
@@ -44,7 +45,7 @@ def screen_ocr(im_url):
    line_list.append(line)
 
  score_list = []
- test_text = ["これくらい全然普通…じゃなかった。すごいね〜！", "うんうん、すごく普通だね〜", ""]
+ test_text = ["これくらい全然普通…じゃなかった。すごいね〜！", "うんうん、すごく普通だね〜", "Name先輩すごいですー！"]
  reply_text = ""
 
  for line in line_list:
@@ -60,7 +61,10 @@ def screen_ocr(im_url):
    reply_text = "うんうん、すごく普通だよ〜(広町リサーチ済)"
   elif sum(score_list) == (score_list[0] + score_list[1]):
    reply_text = "これくらい全然普通…じゃなかった。すごいね〜！(広町リサーチ済)"
+  elif score_list[3] >= 1 or score_list[1] >= 1:
+   reply_text = "そのミス、広町の目はごまかせないよ〜？"
  except:
-  pass
+   reply_text = random.choice(test_text)
  print(line_list)
  print(score_list)
+ return reply_text
