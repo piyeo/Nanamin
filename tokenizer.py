@@ -29,13 +29,24 @@ def generate_tweet(sentense):
             part_cnt += 1
         gen_sentense += word
         if part_cnt == part_list.count('名詞'):
-            try:
-                if part_list[cnt + 1] == ('動詞') or part_list[cnt + 1] == ('形容詞'):
-                    gen_sentense += (base_word_list[cnt + 1] + "の")
-                elif part_list[cnt + 2] == ('動詞') or part_list[cnt + 2] == ('形容詞'):
-                    gen_sentense += (word_list[cnt + 1] + base_word_list[cnt + 2] + "の")
-            except:
-                pass
+            # print("cnt :{}".format(cnt))
+            # print("word_list :{}".format(word_list))
+            for i in range(cnt, len(word_list)):
+                # print("i :{}".format(i))
+                if part_list[i] == ('動詞') or part_list[i] == ('形容詞'):
+                    for j in range(cnt + 1, i):
+                        # print("j :{}".format(j))
+                        # print("word_list[j] :{}".format(word_list[j]))
+                        gen_sentense += word_list[j]
+                    gen_sentense += (base_word_list[i] + "の")
+                    break
+            # try:
+            #     if part_list[cnt + 1] == ('動詞') or part_list[cnt + 1] == ('形容詞'):
+            #         gen_sentense += (base_word_list[cnt + 1] + "の")
+            #     elif part_list[cnt + 2] == ('動詞') or part_list[cnt + 2] == ('形容詞'):
+            #         gen_sentense += (word_list[cnt + 1] + base_word_list[cnt + 2] + "の")
+            # except:
+            #     pass
             break
         cnt += 1
     gen_sentense += "って普通……だよね？" if random.random() > 0.1 else "って普通じゃなかったんだ……"

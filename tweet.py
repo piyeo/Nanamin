@@ -29,7 +29,7 @@ try:
                     "どこ" not in sentence and "誰" not in sentence and "だれ" not in sentence and\
                     "かっこよ" not in sentence and "イベ乙" not in sentence and "・・・" not in sentence and\
                     sentence[0] != "#" and "あああ" not in sentence and "ぁぁぁ" not in sentence and\
-                    "まじで" not in sentence and "マジで" not in sentence:
+                    "まじで" not in sentence and "マジで" not in sentence and "かよ" not in sentence:
                 if "http" not in sentence:
                     if len(sentence) >= 30:
                         sentence = sentence[:30]
