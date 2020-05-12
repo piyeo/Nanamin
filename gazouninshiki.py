@@ -1,7 +1,7 @@
 #-*- coding:utf-8 -*-
 import tweepy
 import key
-from recognization import ocr
+import ocr
 
 auth = tweepy.OAuthHandler(key.CK, key.CS)
 auth.set_access_token(key.AT, key.AS)
