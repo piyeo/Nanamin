@@ -24,7 +24,7 @@ dt_now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
 
 try:
     sen_list = []
-    for status in api.home_timeline(q="filter:retweets",count=300):
+    for status in api.home_timeline(count=300):
         check = False
         if status.user.screen_name == Twitter_ID:
             continue
