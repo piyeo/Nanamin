@@ -56,15 +56,15 @@ try:
     word_len_goodbye(tweet, "！")
     word_len_goodbye(tweet, "?")
     word_len_goodbye(tweet, "？")
-    if dt_now.hour == 9:
-        for word in first_word:
-            if tweet.startswith(word):
-                tweet = tweet.replace(word, "")
-                if tweet[0] == "、" or tweet[0] == " " or tweet[0] == ",":
-                    tweet = tweet[1:]
-        tweet = "ごきげんよ〜、ところで" + tweet
-    elif dt_now.hour == 23:
-        tweet = tweet + "というわけで、おやすみなさ〜い"
+    # if dt_now.hour == 9:
+    #     for word in first_word:
+    #         if tweet.startswith(word):
+    #             tweet = tweet.replace(word, "")
+    #             if tweet[0] == "、" or tweet[0] == " " or tweet[0] == ",":
+    #                 tweet = tweet[1:]
+    #     tweet = "ごきげんよ〜、ところで" + tweet
+    # elif dt_now.hour == 23:
+    #     tweet = tweet + "というわけで、おやすみなさ〜い"
     print(tweet)
     api.update_status(tweet)
 except:
