@@ -5,6 +5,16 @@ import pytz
 import key
 import tokenizer
 
+
+def word_len_goodbye(sen, word):
+    cnt = 0
+    for i in reversed(sen):
+        if i == word:
+            cnt += 1
+    result = sen[:-cnt]
+    return result
+
+
 auth = tweepy.OAuthHandler(key.CK, key.CS)
 auth.set_access_token(key.AT, key.AS)
 
@@ -12,7 +22,7 @@ api = tweepy.API(auth)
 Twitter_ID = str(api.me().screen_name)
 
 ng_word = ["@", "質問", "おは", "普通", "おやすみ", "かわいい", "よろ", "w", "WW",
-           "寝", "イベお", "乙", "協力", "なんで", "ふざけん", "！！",
+           "寝", "イベお", "乙", "協力", "なんで", "ふざけん",
            "どうして", "なぜ", "何故", "ありがと", "(", ")", ".", "・・", "…", "ＲＴ", "どこ", "誰", "だれ",
            "かっこ", "イベ乙", "ああ", "ぁぁ", "ぉぉ", "おお", "ぇぇ", "ええ", "まじで", "マジで", "かよ", "shindan",
            "殺", "ほか", "定期", "もん", "訃報"]
@@ -42,6 +52,10 @@ try:
                     print(sentence, tokenizer.generate_tweet(sentence))
                     sen_list.append(sentence)
     tweet = tokenizer.generate_tweet(sen_list[random.randint(0, len(sen_list) - 1)])
+    word_len_goodbye(tweet, "!")
+    word_len_goodbye(tweet, "！")
+    word_len_goodbye(tweet, "?")
+    word_len_goodbye(tweet, "？")
     if dt_now.hour == 9:
         for word in first_word:
             if tweet.startswith(word):
