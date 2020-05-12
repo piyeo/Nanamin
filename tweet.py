@@ -13,15 +13,18 @@ Twitter_ID = str(api.me().screen_name)
 
 ng_word = ["@", "質問", "おは", "普通", "おやすみ", "かわいい", "よろ", "w", "WW",
            "寝", "イベお", "乙", "協力", "なんで", "ふざけん", "！！",
-           "どうして", "なぜ", "何故", "ありがと", "(", ")", ".", "・・", "…", "RT", "ＲＴ", "どこ", "誰", "だれ",
+           "どうして", "なぜ", "何故", "ありがと", "(", ")", ".", "・・", "…", "ＲＴ", "どこ", "誰", "だれ",
            "かっこ", "イベ乙", "ああ", "ぁぁ", "ぉぉ", "おお", "ぇぇ", "ええ", "まじで", "マジで", "かよ", "shindan",
-           "殺", "ほか", "定期", "もん"]
+           "殺", "ほか", "定期", "もん", "訃報"]
+
+first_word = ["やっぱ", "実は", "ぶっちゃけ", "つまり", "結局", "【悲報】", "【朗報】", "まあ", "しかも", "ついに",
+              "遂に"]
 
 dt_now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
 
 try:
     sen_list = []
-    for status in api.home_timeline(count=300):
+    for status in api.home_timeline(q="filter:retweets",count=300):
         check = False
         if status.user.screen_name == Twitter_ID:
             continue
@@ -40,9 +43,13 @@ try:
                     sen_list.append(sentence)
     tweet = tokenizer.generate_tweet(sen_list[random.randint(0, len(sen_list) - 1)])
     if dt_now.hour == 9:
+        for word in first_word:
+            if word in tweet:
+                tweet = tweet.replace(word, "")
         tweet = "ごきげんよ〜、ところで" + tweet
     elif dt_now.hour == 23:
         tweet = tweet + "というわけで、おやすみなさ〜い"
+    print(tweet)
     api.update_status(tweet)
 except:
     api.update_status("今、スマホで調べてるからちょっと待ってて")

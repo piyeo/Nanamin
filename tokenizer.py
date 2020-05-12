@@ -4,7 +4,7 @@ import random
 def generate_tweet(sentense):
     tokenizer = Tokenizer()
 
-    print(sentense)
+    # print(sentense)
     word_list = tokenizer.tokenize(sentense, wakati=True)
     part_list = [token.part_of_speech.split(',')[0] for token in tokenizer.tokenize(sentense)]
     base_word_list = [token.base_form for token in tokenizer.tokenize(sentense)]
