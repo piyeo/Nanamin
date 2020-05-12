@@ -2,3 +2,4 @@ Janome==0.3.10
 tweepy==3.8.0
 python-dotenv==0.13.0
 pyocr==0.7.2
+pytz==2019.3
