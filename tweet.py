@@ -44,8 +44,10 @@ try:
     tweet = tokenizer.generate_tweet(sen_list[random.randint(0, len(sen_list) - 1)])
     if dt_now.hour == 9:
         for word in first_word:
-            if word in tweet:
+            if tweet.startswith(word):
                 tweet = tweet.replace(word, "")
+                if tweet[0] == "、" or tweet[0] == " " or tweet[0] == ",":
+                    tweet = tweet[1:]
         tweet = "ごきげんよ〜、ところで" + tweet
     elif dt_now.hour == 23:
         tweet = tweet + "というわけで、おやすみなさ〜い"
