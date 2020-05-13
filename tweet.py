@@ -30,8 +30,6 @@ ng_word = ["@", "質問", "おは", "普通", "おやすみ", "かわいい", "�
 first_word = ["やっぱ", "実は", "ぶっちゃけ", "つまり", "結局", "【悲報】", "【朗報】", "まあ", "しかも", "ついに",
               "遂に"]
 
-times = [9, 11, 13, 15, 17, 18, 19, 20, 21, 22, 23]
-
 dt_now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
 
 try:
@@ -68,10 +66,7 @@ try:
     elif dt_now.hour == 23:
         tweet = tweet + "というわけで、おやすみなさ〜い"
     print(tweet)
-    for time in times:
-        if dt_now.hour == time:
-            api.update_status(tweet)
-            break
+    api.update_status(tweet)
 except:
     api.update_status("今、スマホで調べてるからちょっと待ってて")
     pass
