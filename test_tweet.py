@@ -7,4 +7,4 @@ auth.set_access_token(key.AT, key.AS)
 
 api = tweepy.API(auth)
 
-# api.update_status("")
+api.update_status("アカウント間違えちゃった…ゴメンね…")
