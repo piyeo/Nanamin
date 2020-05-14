@@ -21,6 +21,7 @@ auth.set_access_token(key.AT, key.AS)
 api = tweepy.API(auth)
 Twitter_ID = str(api.me().screen_name)
 
+
 ng_word = ["@", "質問", "おは", "普通", "おやすみ", "かわいい", "よろ", "w", "WW",
            "寝", "イベお", "乙", "協力", "なんで", "ふざけん",
            "どうして", "なぜ", "何故", "ありがと", "(", ")", ".", "・・", "…", "ＲＴ", "どこ", "誰", "だれ",
@@ -34,7 +35,7 @@ dt_now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
 
 try:
     sen_list = []
-    for status in api.home_timeline(count=300):
+    for status in api.home_timeline(count=200):
         check = False
         if status.user.screen_name == Twitter_ID:
             continue
