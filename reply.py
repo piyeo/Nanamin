@@ -16,8 +16,16 @@ timeline = api.mentions_timeline()
 for status in timeline:
     status_id = status.id
     screen_name = status.author.screen_name
+    text = str(status.text).replace("\n", "")
+    f = ""
     if not status.favorited:
-        f = open("texts/response.txt", "r")
+        if "普通じゃ" in text or "異常" in text or "普通なの" in text or "普通か？" in text or "普通とは" in text or\
+                "変" in text:
+            f = open("texts/ijou.txt", "r")
+        elif "普通" in text or "変じゃ":
+            f = open("texts/futuu.txt", "r")
+        else:
+            f = open("texts/response.txt", "r")
         line = f.readlines()
         res = "".join(random.sample(line, 1))
         if "Name" in res:
