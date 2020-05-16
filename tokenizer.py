@@ -40,16 +40,9 @@ def generate_tweet(sentense):
                         gen_sentense += word_list[j]
                     gen_sentense += (base_word_list[i] + "の")
                     break
-            # try:
-            #     if part_list[cnt + 1] == ('動詞') or part_list[cnt + 1] == ('形容詞'):
-            #         gen_sentense += (base_word_list[cnt + 1] + "の")
-            #     elif part_list[cnt + 2] == ('動詞') or part_list[cnt + 2] == ('形容詞'):
-            #         gen_sentense += (word_list[cnt + 1] + base_word_list[cnt + 2] + "の")
-            # except:
-            #     pass
             break
         cnt += 1
-    gen_sentense += "って普通……だよね？" if random.random() > 0.1 else "って普通じゃなかったんだ……"
+    gen_sentense += "って普通だよね……？" if random.random() > 0.1 else "って普通じゃなかったんだ……"
     # print(gen_sentense)
 
     return gen_sentense
