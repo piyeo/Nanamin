@@ -7,7 +7,7 @@ import random
 auth = tweepy.OAuthHandler(key.CK, key.CS)
 auth.set_access_token(key.AT, key.AS)
 
-api = tweepy.API(auth)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 
 Twitter_ID = str(api.me().screen_name)
 

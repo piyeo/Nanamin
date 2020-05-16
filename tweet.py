@@ -18,7 +18,7 @@ def word_len_goodbye(sen, word):
 auth = tweepy.OAuthHandler(key.CK, key.CS)
 auth.set_access_token(key.AT, key.AS)
 
-api = tweepy.API(auth)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 Twitter_ID = str(api.me().screen_name)
 
 
@@ -29,7 +29,7 @@ ng_word = ["@", "質問", "おは", "普通", "おやすみ", "かわいい", "�
            "殺", "ほか", "定期", "もん", "訃報", "きもい", "キモ", "あの", "その", "この", "どの", "の日", "なん？",
            "なの", "じゃん", "bot", "みたい", "薬物", "っっ"]
 
-first_word = ["やっぱ", "実は", "ぶっちゃけ", "つまり", "結局", "【悲報】09ooo", "【朗報】", "まあ", "しかも", "ついに",
+first_word = ["やっぱ", "実は", "ぶっちゃけ", "つまり", "結局", "【悲報】", "【朗報】", "まあ", "しかも", "ついに",
               "遂に"]
 
 dt_now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
@@ -58,6 +58,8 @@ try:
     word_len_goodbye(tweet, "！")
     word_len_goodbye(tweet, "?")
     word_len_goodbye(tweet, "？")
+    word_len_goodbye(tweet, "。")
+    word_len_goodbye(tweet, "、")
     if dt_now.hour == 9:
         for word in first_word:
             if tweet.startswith(word):
