@@ -18,7 +18,7 @@ def word_len_goodbye(sen, word):
 auth = tweepy.OAuthHandler(key.CK, key.CS)
 auth.set_access_token(key.AT, key.AS)
 
-api = tweepy.API(auth, wait_on_rate_limit=True)
+api = tweepy.API(auth)
 Twitter_ID = str(api.me().screen_name)
 
 
@@ -72,7 +72,8 @@ try:
     print(tweet)
     api.update_status(tweet)
 except:
-    api.update_status("API制限かかっちゃった…ゴメンね…")
+    print("API制限かかっちゃったみたい……")
+    # api.update_status("API制限かかっちゃった…ゴメンね…")
     pass
 
 
