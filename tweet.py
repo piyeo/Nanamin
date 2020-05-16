@@ -49,8 +49,8 @@ try:
                 if "http" not in sentence and sentence[0] != "#" and ("死" not in sentence or "爆死" in sentence)\
                         and sentence[-1] != "ー" and ("笑" not in sentence or "笑う" in sentence
                                                      or "笑え" in sentence or "笑っ" in sentence):
-                    if len(sentence) >= 30:
-                        sentence = sentence[:30]
+                    if len(sentence) >= 35:
+                        sentence = sentence[:35]
                     print(sentence, tokenizer.generate_tweet(sentence))
                     sen_list.append(sentence)
     tweet = tokenizer.generate_tweet(sen_list[random.randint(0, len(sen_list) - 1)])
