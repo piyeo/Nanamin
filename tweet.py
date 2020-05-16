@@ -27,7 +27,7 @@ ng_word = ["@", "質問", "おは", "普通", "おやすみ", "かわいい", "�
            "どうして", "なぜ", "何故", "ありがと", "(", ")", ".", "・・", "…", "ＲＴ", "どこ", "誰", "だれ",
            "かっこ", "イベ乙", "ああ", "ぁぁ", "ぉぉ", "おお", "ぇぇ", "ええ", "まじで", "マジで", "かよ", "shindan",
            "殺", "ほか", "定期", "もん", "訃報", "きもい", "キモ", "あの", "その", "この", "どの", "の日", "なん？",
-           "なの"]
+           "なの", "じゃん", "bot", "みたい", "薬物", "っっ"]
 
 first_word = ["やっぱ", "実は", "ぶっちゃけ", "つまり", "結局", "【悲報】09ooo", "【朗報】", "まあ", "しかも", "ついに",
               "遂に"]
@@ -36,12 +36,12 @@ dt_now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
 
 try:
     sen_list = []
-    for status in api.home_timeline(count=200):
+    for status in tweepy.Cursor(api.home_timeline).items(500):
         check = False
         if status.user.screen_name == Twitter_ID:
             continue
         sentence = str(status.text).replace('\n', '')
-        if 50 >= len(sentence) >= 10:
+        if 50 >= len(sentence) >= 15:
             for word in ng_word:
                 if word in sentence:
                     check = True
