@@ -36,7 +36,7 @@ dt_now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
 
 try:
     sen_list = []
-    for status in tweepy.Cursor(api.home_timeline).items(300):
+    for status in api.home_timeline(count=200):
         check = False
         if status.user.screen_name == Twitter_ID:
             continue
