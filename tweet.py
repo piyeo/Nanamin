@@ -71,8 +71,8 @@ try:
         tweet = tweet + "というわけで、おやすみなさ〜い"
     print(tweet)
     api.update_status(tweet)
-except:
-    print("API制限かかっちゃったみたい……")
+except Exception as e:
+    print(e)
     # api.update_status("API制限かかっちゃった…ゴメンね…")
     pass
 
