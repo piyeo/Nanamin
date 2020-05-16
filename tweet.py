@@ -36,7 +36,7 @@ dt_now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
 
 try:
     sen_list = []
-    for status in tweepy.Cursor(api.home_timeline).items(500):
+    for status in tweepy.Cursor(api.home_timeline).items(300):
         check = False
         if status.user.screen_name == Twitter_ID:
             continue
@@ -70,7 +70,7 @@ try:
     print(tweet)
     api.update_status(tweet)
 except:
-    api.update_status("今、スマホで調べてるからちょっと待ってて")
+    api.update_status("API制限かかっちゃった…ゴメンね…")
     pass
 
 
